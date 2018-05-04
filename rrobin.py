@@ -59,6 +59,16 @@ while (numofprocess!=0):
 print ("processname  A_T   W_T   TA_T")  
 for i in range(3):
     print (process[i],"          ",arival_time[i],"  ",wait_time[i]," ",turnaround[i])
+avgturn=0
+waittime=0
+for index in range(3):
+      waittime=waittime+wait_time[index]
+	  avgturn=avgturn+turnaround[index]
+avgturn=avgturn/3
+waittime=waittime/3
+print("average time",avgturn)
+print("wait time",waittime)
+
                   
           
                   
