@@ -19,7 +19,7 @@ print("GANTT CHART")
     
      print 'turnaroundtime',turnaround[index]
      start_time=start_time+burst_time[index]
-for index in range(3)
+for index in range(3):
       waittime=waittime+wait_time[index]
 	  avgturn=avgturn+turnaround[index]
 avgturn=avgturn/3
