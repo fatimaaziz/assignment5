@@ -39,6 +39,15 @@ for index in range(3):
     
      print ('turnaroundtime',turnaround[index])
      start_time=start_time+burst_time[index]
+avgturn=0
+waittime=0
+for index in range(3):
+      waittime=waittime+wait_time[index]
+	  avgturn=avgturn+turnaround[index]
+avgturn=avgturn/3
+waittime=waittime/3
+print("average time",avgturn)
+print("wait time",waittime)
 
 
     
