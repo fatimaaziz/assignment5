@@ -13,9 +13,10 @@ inp=int(input("input time : "))
 for i in range (n):
 	  process={}
 	  ready[i]=process
+
 	  ready[i]['proname']=input("enter process name : ")
-	  ready[i]['arrival']=int(input("enter the arival time"))
-	  ready[i]['brust']=int(input("enter the brust  time"))
+	  ready[i]['arrival']=int(input("enter the arival time: "))
+	  ready[i]['brust']=int(input("enter the brust  time: "))
 	  ready[i]['remaining time']=ready[i]['brust']
 	  ready[i]['turnaround']=0
 	  ready[i]['waiting']=0
@@ -31,13 +32,15 @@ for i in range(n-1):#sorting acorrding to arriva time
              temp=ready[j]
              ready[j]=ready[j+1]
              ready[j+1]=ready[j]     
- 
+for i in range (n):
+    print(ready[i]['arrival'])
 time=ready[0]['arrival']
 resultant=[0]*n
 rp=n
 print("GANTT CHART")
 while(rp!=0):
-        if(ready[i]['pro is what']==1):#if odd proces
+    if(readyfront<readyrear):
+        if(ready[readyfront]['pro is what']==1):#if odd proces
                if(ready[readyfront]['remaining time']>qt):
                   time=time+qt
                   print (ready[readyfront]['proname'],':',time)
@@ -72,7 +75,7 @@ while(rp!=0):
                   print (ready[readyfront]['proname'],':',time)
                   ready[readyfront]['finish time']=time
                   ready[readyfront]['turnaround']=ready[readyfront]['finish time']-ready[readyfront]['arrival']
-                  waiting=ready[readyfront]['finish time']-ready[readyfront]['arrival']-ready[readyfront]['brust']
+                  ready[readyfront]['waiting']=ready[readyfront]['finish time']-ready[readyfront]['arrival']-ready[readyfront]['brust']
                   rp=rp-1
                   
                elif(ready[readyfront]['remaining time']>ready[readyfront]['remaining qt']):
@@ -97,11 +100,12 @@ while(rp!=0):
                   rp=rp-1
         
         readyfront=readyfront+1     
-        if(waitingqueue[waitingfront]['waitingqueuert']<=time):
-            ready[readyfront]['waitingqueuert']=0
-            ready[readyrear]=waitingqueue[waitingfront]
-            waitingfront=waitingfront+1
-
+    if( waitingrear>waitingfront):
+        if(time>=waitingqueue[waitingfront]['waitingqueuert']):
+              ready[readyfront]['waitingqueuert']=0
+              ready[readyrear]=waitingqueue[waitingfront]
+              waitingfront=waitingfront+1
+  
 turnarround=0
 wait=0
 for i in range(n):
@@ -109,6 +113,6 @@ for i in range(n):
 	 wait=wait+resultant[rp]['waiting']
 
 wait=wait/n
-turnaround=turnaround/n
+turnarround=turnarround/n
 print("average trunouttime",turnarround)
 print("average waitingtime",wait)
